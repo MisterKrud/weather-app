@@ -10,11 +10,12 @@
 
 
 
-export const createUrl = (apiKey, location, date1, date2, unit ) =>{
-    return `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline${location}${date1}${date2}?unitGroup=${unit}&key=${apiKey}$contentType=json`
+export const createUrl = (location, unit ) =>{
+    // return `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline${location}${date1}${date2}?unitGroup=${unit}&key=${apiKey}$contentType=json`
+     return `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline${location}?unitGroup=${unit}&key=${apiKey}$contentType=json`
 }
 
-export const populateUrlComponent = (component, str) => {
+export const populateUrlComponent = (str) => {
     if (str === "") {
         return ""
     } else if(str && (component === unit)){
