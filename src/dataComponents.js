@@ -1,4 +1,4 @@
-export const urlFragments = () =>{
+
     const apiKey = "J5R7RYMK57B597QLPD9UF4W8Y";
     let location = "";
     let date1 = "";
@@ -7,7 +7,7 @@ export const urlFragments = () =>{
     let baseURL = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/";
 
 
-}
+
 
 
 export const createUrl = (apiKey, location, date1, date2, unit ) =>{
