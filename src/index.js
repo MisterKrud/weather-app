@@ -1,10 +1,10 @@
 import "./styles.css";
 import { getWeatherData, getLocation, getDate1, getDate2, getUnits, fetchUrl} from "./apiCall.js";
-import { location, getData } from "./userInput";
+import {getData } from "./userInput";
 console.log('Working')
 
 getWeatherData();
-location();
+// location();
 getData();
 
 window.getWeatherData = getWeatherData;
