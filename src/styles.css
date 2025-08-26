@@ -1,5 +1,52 @@
+
+/* Initial project styling */
 * {
   margin: 0;
   padding: 0;
+  border: 0 solid transparent;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+   padding: 0.5rem;
+}
+
+div {
+  padding: 0.5rem;
   border: 0.5px solid gray;
+}
+
+button {
+  height: 35px;
+  width: 90px;
+  margin: 5px;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px darkgrey;
+  border: none;
+}
+
+button:hover {
+  background-color: rgb(196, 196, 196);
+
+}
+button:active {
+  transform: translateX(2px) translateY(2px);
+}
+
+input {
+  height: 1.5rem;
+  border: 0.5px solid rgb(214, 214, 214);
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px darkgrey;
+  padding: .1rem .6rem;
+}
+
+input:hover{
+  background-color: whitesmoke;
+}
+
+input:focus{
+  padding: .25rem .6rem;
 }
