@@ -1,16 +1,27 @@
 import { dataComponents } from "./dataComponents";
+// import { currentLocation, thisLocation } from "./geoLocation";
 
 const components = dataComponents()
-//  export const getLocation = (str) => populateUrlComponent(location, str); 
-//   export const getDate1 = (date1) => populateUrlComponent(date1, date);
-// export   const getDate2 = (date) => populateUrlComponent(date2, date);
-//  export  const getUnits = (un) => populateUrlComponent(units, un);
 
-  // export const fetchUrl = (location, unit)=> createUrl(location, unit)
+const success = (pos) => {
+    const crd = pos.coords;
+    console.log(crd)
+    const lat = crd.latitude
+    const lon = crd.longitude
+    console.log(`latitude: ${lat}, longitude: ${lon}`);
+    return crd
+  }
+
+  const location = navigator.geolocation.getCurrentPosition(success)
+  console.log('location:' +location)
+
+// export const currentLocation = () => ;
+
+
 
   
 
-export async function getWeatherData(loc="Dubbo",  dateA="", dateB="", unit="metric") {
+export async function getWeatherData(loc=location,  dateA="", dateB="", unit="metric") {
  
   console.log(loc,  dateA, dateB, unit)
 
