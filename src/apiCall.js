@@ -1,9 +1,12 @@
 import { dataComponents } from "./dataComponents";
+import { getData } from "./userInput";
 // import { location } from "./geoLocation";
+
+
 
 const components = dataComponents();
 
-export const weatherInfo = () => {
+const weatherInfo = () => {
   function success(pos) {
     const crd = pos.coords;
 
@@ -16,7 +19,9 @@ export const weatherInfo = () => {
   const location = () => navigator.geolocation.getCurrentPosition(success);
 
   const coordinates = location();
-  async function getWeatherData(
+
+}
+export function getWeatherData(
     loc = "Sydney",
     dateA = "",
     dateB = "",
@@ -75,12 +80,13 @@ export const weatherInfo = () => {
       }
       console.log(`Today's maximum ${weatherData.days[0].tempmax} degrees`);
       console.log(`Today's minimum ${weatherData.days[0].tempmin} degrees`);
+      console.log(typeof(userInputValues))
+      console.log(`${weatherData.days.length} day forecast available`)
+      console.log(weatherData.days[0].datetime)
 
       return weatherData;
     };
 
     getWeather();
   }
-  getWeatherData(coordinates);
-  console.log(coordinates + " at the bottom of the function");
-};
+

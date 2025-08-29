@@ -1,4 +1,4 @@
-import { weatherInfo } from "./apiCall";
+import { getWeatherData } from "./apiCall";
 
 // const city = document.getElementById("location");
 // const citySubmit = document.getElementById("city-button");
