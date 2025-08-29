@@ -1,13 +1,16 @@
 import "./styles.css";
-import { getWeatherData, getLocation, getDate1, getDate2, getUnits, fetchUrl} from "./apiCall.js";
+import {  weatherInfo, getDate2, getUnits, fetchUrl} from "./apiCall.js";
 import {getData } from "./userInput";
+import { location } from "./geoLocation.js";
 console.log('Working')
 
-getWeatherData();
+// location()
+// const location = (() => navigator.geolocation.getCurrentPosition(success))()
+weatherInfo();
 // location();
 getData();
 
-window.getWeatherData = getWeatherData;
+
 
 // window.getLocation = getLocation;
 // window.getDate1 = getDate1;
