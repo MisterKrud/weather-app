@@ -1,6 +1,6 @@
 import { dataComponents } from "./dataComponents";
 import { format, fromUnixTime, getDay } from "date-fns";
-import { getData } from "./userInput";
+
 // import { location } from "./geoLocation";
 
 const components = dataComponents();
@@ -57,9 +57,9 @@ export function getWeatherData(
       return date2;
     })();
 
-    console.log(
-      `${components.baseURL}${loc}${getDate1}${getDate2}?unitGroup=${unit}&include=current&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`
-    );
+    // console.log(
+    //   `${components.baseURL}${loc}${getDate1}${getDate2}?unitGroup=${unit}&include=current&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`
+    // );
 
     const response = await fetch(
       `${components.baseURL}${loc}${getDate1}${getDate2}?unitGroup=${unit}&include=current&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`,

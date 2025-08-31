@@ -11,15 +11,16 @@
     </header>
    
     <div id="content">
+        <div id="top-bar">
         <div id="location-info">
-            <label for="location">Location
+            <!-- <label for="location">Choose location </label> -->
                 
                 <input type="text" name="location" id="location" />
-           </label>
-            <button id="location-button">Submit</button>
+          
+            <button id="location-button">Choose location</button>
         </div>
 
-        <div id="date-one">
+        <!-- <div id="date-one">
             <label for="date-one">From (date)
                 
                 <input type="date" name="date-1" id="date-1" />
@@ -32,16 +33,22 @@
                 <input type="date" name="date-2" id="date-2" />
             </label>
              <button id = "date2-submit">Submit</button>
-        </div>
-          <div id="unit-div">
-            <label for="unit">Units
+        </div> -->
+        <div class="custom-select">
+        <div id="unit-div">
+            <label for="unit">Units:</label>
+            <select name="units" id="units">
+                <option value="celsius" selected>Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+            </select>
                 
-                <input type="text" name="unit" id="unit" />
-                <button id="unit-button">Submit</button>
-            </label>
-
+                <!-- <input type="text" name="unit" id="unit" />
+                <button id="unit-button">Submit</button> -->
+            
     </div>
-    <button id="submit-all">Submit all</button>
+    </div> 
+    </div>
+    <!-- <button id="submit-all">Submit all</button> -->
     </div>
 </body>
 </html>
