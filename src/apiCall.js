@@ -28,6 +28,10 @@ export function getWeatherData(
     dateB = "",
     unit = "metric"
   ) {
+
+    let deg 
+
+    
     console.log("^^getWeatherData");
     console.log(loc, dateA, dateB, unit);
 
@@ -66,7 +70,9 @@ export function getWeatherData(
         `${components.baseURL}${loc}${getDate1}${getDate2}?unitGroup=${unit}&include=current&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`,
         { mode: "cors" }
       );
+     
       const weatherData = await response.json();
+   
 
       console.log("function activated");
       console.log(weatherData);
@@ -80,28 +86,57 @@ export function getWeatherData(
       } catch (error) {
         console.log("No current temp information");
       }
+         if (unit === "uk" || unit === "us" ) {
+       deg = '\u00B0F'
+       
+    } else {
+       deg = '\u00B0C'
+      
+    }
 
       let weekDays = []
-      console.log(`${loc.toUpperCase()} 7 DAY FORECAST`);
+      //   if (unit = "US" || "UK"){
+      //   const deg = '\u00B0F'
+      // } else {
+        // const deg = '\u00B0C'
+      // }
+      //CONSOLE LOG 7 DAY FORECAST
      for (let i=0; i< 7; i++){
-      // console.log(weatherData.days[i].datetimeEpoch)
       const data = weatherData.days
       const dateFromUnix = fromUnixTime(weatherData.days[i].datetimeEpoch)
       const weekDay = format(dateFromUnix, 'eeee');
         weekDays.push(weekDay)
       if (i === 0){
-        console.log(`${weekDay} (Today): ${data[i].conditions} -> ${data[i].tempmin}\u00B0C - ${data[i].tempmax}\u00B0C`);
+        console.log('')
+        console.log(`${loc.toUpperCase()} 7 DAY FORECAST`);
+        console.log(`${weekDay} (Today): ${data[i].conditions} -> ${data[i].tempmin}${deg} - ${data[i].tempmax}${deg}`);
       } else if (i ===1){
-        console.log(`${weekDay} (Tomorrow): ${data[i].conditions} ->  ${data[i].tempmin}\u00B0C - ${data[i].tempmax}\u00B0C`);
+        console.log(`${weekDay} (Tomorrow): ${data[i].conditions} ->  ${data[i].tempmin}${deg} - ${data[i].tempmax}${deg}`);
       } else {
-        console.log(`${weekDay}: ${data[i].conditions} ->  ${data[i].tempmin}\u00B0C - ${data[i].tempmax}\u00B0C`);
+        console.log(`${weekDay}: ${data[i].conditions} ->  ${data[i].tempmin}${deg} - ${data[i].tempmax}${deg}`);
       }
-      
-    
-  
     }
 
-   
+   //CONSOLE LOG TODAY'S WEATHER DETAILS
+   const today = weatherData.days[0]
+   console.log('');
+   console.log("TODAY'S DETAILS");
+   console.log(today.description);
+   console.log('');
+   console.log(`TEMP`);
+   console.log(`Now: ${today.temp}${deg} (feels like ${today.feelslike}${deg})`);
+   console.log(`Max: ${today.tempmax}${deg} (feels like ${today.feelslikemax}${deg})`);
+   console.log(`Min: ${today.tempmin}${deg} (feels like ${today.feelslikemin}${deg})`);
+   console.log('');
+   console.log(`Sunrise: ${today.sunrise}`);
+   console.log(`Sunset: ${today.sunset}`);
+   console.log('');
+    console.log(`Chance of rain: ${today.precipprob}`)
+  console.log('');
+   console.log(`Humidity: ${today.humidity}`)
+   console.log(`Wind speed: ${today.windspeed}`)
+   console.log(`UV Index: ${today.uvindex}`)
+
     
 
 
