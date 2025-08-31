@@ -60,10 +60,10 @@ export function getWeatherData(
       return date2;
     })();
 
-    // console.log(
-    //   `${components.baseURL}${loc}${getDate1}${getDate2}?unitGroup=${unit}&include=current&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`
-    // );
-
+    console.log(
+      `${components.baseURL}${loc}${getDate1}${getDate2}?unitGroup=${unit}&include=current&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`
+    );
+console.log(unit)
     const response = await fetch(
       `${components.baseURL}${loc}${getDate1}${getDate2}?unitGroup=${unit}&include=current&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`,
       { mode: "cors" }
@@ -83,12 +83,15 @@ export function getWeatherData(
     } catch (error) {
       console.log("No current temp information");
     }
-    if (unit === "uk" || unit === "us") {
-      deg = "\u00B0F";
-    } else {
+    if (unit === "metric" ) {
       deg = "\u00B0C";
+    } else {
+      deg = "\u00B0F";
     }
 
+    console.log('unit: '+unit)
+    console.log(deg)
+;
     let weekDays = [];
 
 

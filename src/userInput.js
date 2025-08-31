@@ -53,13 +53,14 @@ export const getUnit = () => {
   opt.addEventListener("click", () => {
     forecastDiv.innerHTML =''
    let unitValue 
-   if(opt.value === "Celsius"){
+   if(opt.value === "celsius"){
     unitValue = "metric"
-   } else if (opt.value === "Fahrenheit"){
+   } else if (opt.value === "fahrenheit"){
     unitValue = "us"
    } else {
     unitValue = "metric"
    }
+   console.log(opt.value)
     
     inputValues[3] = unitValue;
     getWeatherData(
