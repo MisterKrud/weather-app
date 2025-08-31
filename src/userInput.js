@@ -15,9 +15,11 @@ import { getWeatherData } from "./apiCall";
 // };
 
 const allInputs = Array.from(document.querySelectorAll("input"));
+const locationInput = document.getElementById("location");
 let inputValues = []
 
 const submitButton = document.getElementById("submit-all");
+const locationButton = document.getElementById("location-button");
 export const getData = () => {
   submitButton.addEventListener("click", () => {
     allInputs.forEach((input) => {
@@ -29,6 +31,13 @@ export const getData = () => {
   });
   
 };
+
+export const getLocation = () =>{
+  locationButton.addEventListener("click", () =>{
+    getWeatherData(locationInput.value)
+  })
+
+}
 
 
 

@@ -1,4 +1,5 @@
 import { dataComponents } from "./dataComponents";
+import { format, fromUnixTime, getDay} from "date-fns";
 import { getData } from "./userInput";
 // import { location } from "./geoLocation";
 
@@ -71,6 +72,7 @@ export function getWeatherData(
       console.log(weatherData);
       console.log(`Date range: ${dateA} to ${dateB}`);
       console.log(`Location: ${weatherData.address}`);
+    
       try {
         console.log(
           `Currently  ${weatherData.currentConditions.temp} degrees and ${weatherData.currentConditions.conditions}`
@@ -78,11 +80,36 @@ export function getWeatherData(
       } catch (error) {
         console.log("No current temp information");
       }
-      console.log(`Today's maximum ${weatherData.days[0].tempmax} degrees`);
-      console.log(`Today's minimum ${weatherData.days[0].tempmin} degrees`);
-      console.log(typeof(userInputValues))
-      console.log(`${weatherData.days.length} day forecast available`)
-      console.log(weatherData.days[0].datetime)
+
+      let weekDays = []
+      console.log(`${loc.toUpperCase()} 7 DAY FORECAST`);
+     for (let i=0; i< 7; i++){
+      // console.log(weatherData.days[i].datetimeEpoch)
+      const dateFromUnix = fromUnixTime(weatherData.days[i].datetimeEpoch)
+      const weekDay = format(dateFromUnix, 'eeee');
+        weekDays.push(weekDay)
+      if (i === 0){
+        console.log(`${weekDays[i]} (Today): ${weatherData.days[i].tempmin}\u00B0C - ${weatherData.days[i].tempmax}\u00B0C`);
+      } else if (i ===1){
+        console.log(`${weekDays[i]} (Tomorrow): ${weatherData.days[i].tempmin}\u00B0C - ${weatherData.days[i].tempmax}\u00B0C`);
+      } else {
+        console.log(`${weekDays[i]}: ${weatherData.days[i].tempmin}\u00B0C - ${weatherData.days[i].tempmax}\u00B0C`);
+      }
+      
+    
+  
+    }
+
+   
+    
+
+
+
+
+
+     
+   
+      
 
       return weatherData;
     };
