@@ -85,15 +85,16 @@ export function getWeatherData(
       console.log(`${loc.toUpperCase()} 7 DAY FORECAST`);
      for (let i=0; i< 7; i++){
       // console.log(weatherData.days[i].datetimeEpoch)
+      const data = weatherData.days
       const dateFromUnix = fromUnixTime(weatherData.days[i].datetimeEpoch)
       const weekDay = format(dateFromUnix, 'eeee');
         weekDays.push(weekDay)
       if (i === 0){
-        console.log(`${weekDays[i]} (Today): ${weatherData.days[i].tempmin}\u00B0C - ${weatherData.days[i].tempmax}\u00B0C`);
+        console.log(`${weekDay} (Today): ${data[i].conditions} -> ${data[i].tempmin}\u00B0C - ${data[i].tempmax}\u00B0C`);
       } else if (i ===1){
-        console.log(`${weekDays[i]} (Tomorrow): ${weatherData.days[i].tempmin}\u00B0C - ${weatherData.days[i].tempmax}\u00B0C`);
+        console.log(`${weekDay} (Tomorrow): ${data[i].conditions} ->  ${data[i].tempmin}\u00B0C - ${data[i].tempmax}\u00B0C`);
       } else {
-        console.log(`${weekDays[i]}: ${weatherData.days[i].tempmin}\u00B0C - ${weatherData.days[i].tempmax}\u00B0C`);
+        console.log(`${weekDay}: ${data[i].conditions} ->  ${data[i].tempmin}\u00B0C - ${data[i].tempmax}\u00B0C`);
       }
       
     
