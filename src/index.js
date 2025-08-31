@@ -1,6 +1,7 @@
 import "./styles.css";
 import {  weatherInfo, getDate2, getUnits, fetchUrl, getWeatherData} from "./apiCall.js";
 import {getData, getLocation, getUnit } from "./userInput";
+
 // import { location } from "./geoLocation.js";
 
 console.log('Working')
@@ -14,6 +15,7 @@ getWeatherData();
 // getData();
 getLocation();
 getUnit();
+
 
 
 // window.getLocation = getLocation;

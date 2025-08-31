@@ -3,11 +3,13 @@ import { getWeatherData } from "./apiCall";
 
 const allInputs = Array.from(document.querySelectorAll("input"));
 const locationInput = document.getElementById("location");
-const unitInput = document.getElementById("unit");
+const unitInput = document.getElementById("units");
 
 const submitButton = document.getElementById("submit-all");
 const locationButton = document.getElementById("location-button");
 const unitButton = document.getElementById("unit-button");
+
+const forecastDiv = document.getElementById("forecast")
 
 let inputValues = [];
 
@@ -30,6 +32,7 @@ let inputValues = [];
 export const getLocation = () => {
   locationButton.addEventListener("click", () => {
     inputValues[0] = locationInput.value;
+    forecastDiv.innerHTML =''
     getWeatherData(
       inputValues[0],
       inputValues[1],
@@ -39,9 +42,26 @@ export const getLocation = () => {
   });
 };
 
+const unitOptions = unitInput.querySelectorAll('option');
+
+
+
 export const getUnit = () => {
-  units.addEventListener("select", () => {
-    inputValues[3] = unitInput.value;
+  unitOptions.forEach((opt) => {
+
+  
+  opt.addEventListener("click", () => {
+    forecastDiv.innerHTML =''
+   let unitValue 
+   if(opt.value === "Celsius"){
+    unitValue = "metric"
+   } else if (opt.value === "Fahrenheit"){
+    unitValue = "us"
+   } else {
+    unitValue = "metric"
+   }
+    
+    inputValues[3] = unitValue;
     getWeatherData(
       inputValues[0],
       inputValues[1],
@@ -49,6 +69,7 @@ export const getUnit = () => {
       inputValues[3]
     );
   });
+})
 };
 
 
