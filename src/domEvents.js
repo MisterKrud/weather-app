@@ -62,7 +62,36 @@ locationHeader.appendChild(locationHeading)
     const today = weatherData.days[0];
  
     const todaysWeather = document.getElementById("today");
-    todaysWeather.innerHTML = `<h4>Today's weather</h4><p>${today.description}</p></br><h5>Temperatures:</h5><p>Now: ${today.temp}${deg} (feels like ${today.feelslike}${deg})</p><p>Max: ${today.tempmax}${deg} (feels like ${today.feelslikemax}${deg})</p><p>Min: ${today.tempmin}${deg} (feels like ${today.feelslikemin}${deg})</p></br><p>Sunrise: ${today.sunrise}</p><p>Sunset: ${today.sunset}</p></br><p>Chance of rain: ${today.precipprob}%</p></br><p>Humidity: ${today.humidity}%</p><p>Wind speed: ${today.windspeed} km/h</p><p>UV Index: ${today.uvindex}</p>`
+    const todaysHeader =document.createElement("div");
+      todaysHeader.id = "toays-header";
+    const todaysTemps = document.createElement("div");
+      todaysTemps.id  = "todays-temps";
+    const todaysSun = document.createElement("div");
+      todaysSun.id = "todays-sun";
+    const todaysPrecip = document.createElement("div");
+      todaysPrecip.id = ("todays-precip");
+    const todaysOther = document.createElement("div");
+      todaysOther.id = "todays-other";
+
+      
+
+    todaysWeather.append(todaysHeader, todaysTemps, todaysSun, todaysOther)
+
+
+    const todaysForecastDivs = todaysWeather.querySelectorAll("div");
+    console.log(todaysForecastDivs)
+     let i = 1
+    todaysForecastDivs.forEach((div) => {
+     
+      div.className = "todays-forecast"
+  
+    });
+
+    todaysHeader.innerHTML = `<h4>Today's weather</h4><p>${today.description}</p></br>`
+    todaysTemps.innerHTML = `<h5>Temperatures:</h5><p>Now: ${today.temp}${deg} (feels like ${today.feelslike}${deg})</p><p>Max: ${today.tempmax}${deg} (feels like ${today.feelslikemax}${deg})</p><p>Min: ${today.tempmin}${deg} (feels like ${today.feelslikemin}${deg})</p></br>`
+    todaysSun.innerHTML = `<p>Sunrise: ${today.sunrise}</p><p>Sunset: ${today.sunset}</p></br>`
+    todaysPrecip.innerHTML = `<p>Chance of rain: ${today.precipprob}%</p></br>`
+    todaysOtherInnerHTML = `<p>Humidity: ${today.humidity}%</p><p>Wind speed: ${today.windspeed} km/h</p><p>UV Index: ${today.uvindex}</p>`
 };
 populateDom();
 }
