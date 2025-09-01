@@ -91,7 +91,7 @@ locationHeader.appendChild(locationHeading)
     todaysTemps.innerHTML = `<h5>Temperatures:</h5><p>Now: ${today.temp}${deg} (feels like ${today.feelslike}${deg})</p><p>Max: ${today.tempmax}${deg} (feels like ${today.feelslikemax}${deg})</p><p>Min: ${today.tempmin}${deg} (feels like ${today.feelslikemin}${deg})</p></br>`
     todaysSun.innerHTML = `<p>Sunrise: ${today.sunrise}</p><p>Sunset: ${today.sunset}</p></br>`
     todaysPrecip.innerHTML = `<p>Chance of rain: ${today.precipprob}%</p></br>`
-    todaysOtherInnerHTML = `<p>Humidity: ${today.humidity}%</p><p>Wind speed: ${today.windspeed} km/h</p><p>UV Index: ${today.uvindex}</p>`
+    todaysOther.InnerHTML = `<p>Humidity: ${today.humidity}%</p><p>Wind speed: ${today.windspeed} km/h</p><p>UV Index: ${today.uvindex}</p>`
 };
 populateDom();
 }
