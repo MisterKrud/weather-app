@@ -1,4 +1,6 @@
 import { getWeatherData } from "./apiCall";
+import { components } from "./dataComponents";
+import { weather } from "./domEvents";
 
 
 const allInputs = Array.from(document.querySelectorAll("input"));
@@ -11,7 +13,7 @@ const unitButton = document.getElementById("unit-button");
 
 const forecastDiv = document.getElementById("forecast")
 
-export let inputValues = ['Sydney','','','metric'];
+let  inputValues = components.inputValues
 
 // export const getData = () => {
 //   submitButton.addEventListener("click", () => {
@@ -28,25 +30,26 @@ export let inputValues = ['Sydney','','','metric'];
 //     console.log(inputValues);
 //   });
 // };
+export const userInputs = () =>{
 
-export const getLocation = () => {
+
+
   locationButton.addEventListener("click", () => {
     inputValues[0] = locationInput.value;
     forecastDiv.innerHTML =''
-    getWeatherData(
-      inputValues[0],
-      inputValues[1],
-      inputValues[2],
-      inputValues[3]
-    );
+    console.log(`userINputs ${inputValues[0]}`);
+    console.log(locationInput.value);
+ 
+   weather();
+    
   });
-};
+
 
 const unitOptions = unitInput.querySelectorAll('option');
 
 
 
-export const getUnit = () => {
+
   unitOptions.forEach((opt) => {
 
   
@@ -63,12 +66,9 @@ export const getUnit = () => {
    console.log(opt.value)
     
     inputValues[3] = unitValue;
-    getWeatherData(
-      inputValues[0],
-      inputValues[1],
-      inputValues[2],
-      inputValues[3]
-    );
+  
+    weather();
+    console.log(inputValues)
   });
 })
 };

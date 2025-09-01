@@ -1,9 +1,9 @@
-import { dataComponents } from "./dataComponents";
+import { components } from "./dataComponents";
 
 
 // import { location } from "./geoLocation";
 
-const components = dataComponents();
+const dataComponents = components;
 
 // const locationHeading = document.createElement("h3")
 // const locationHeader = document.getElementById('location-header');
@@ -30,7 +30,7 @@ export async function getWeatherData(
   dateB = "",
   unit = "metric"
 ) {
-  let deg;
+
 
   console.log("^^getWeatherData");
   console.log(loc, dateA, dateB, unit);
@@ -63,11 +63,11 @@ export async function getWeatherData(
     })();
 
     console.log(
-      `${components.baseURL}${loc}${getDate1}${getDate2}?unitGroup=${unit}&include=days%2Chours%2Ccurrent&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`
+      `${dataComponents.baseURL}${loc}${getDate1}${getDate2}?unitGroup=${unit}&include=days%2Chours%2Ccurrent&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`
     );
 console.log(unit)
     const response = await fetch(
-      `${components.baseURL}${loc}${getDate1}${getDate2}?unitGroup=${unit}&include=days%2Chours%2Ccurrent&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`,
+      `${dataComponents.baseURL}${loc}${getDate1}${getDate2}?unitGroup=${unit}&include=days%2Chours%2Ccurrent&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`,
       { mode: "cors" }
     );
 

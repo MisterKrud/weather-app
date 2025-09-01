@@ -1,14 +1,13 @@
-import { inputValues } from "./userInput"
+import { components } from "./dataComponents";
 import { getWeatherData } from "./apiCall";
 import { format, fromUnixTime, getDay } from "date-fns";
 
 
-
+const inputValues = components.inputValues
 const locationHeading = document.createElement("h3")
 const locationHeader = document.getElementById('location-header');
 
-locationHeading.textContent =`${inputValues[0]} Weather`
-locationHeader.appendChild(locationHeading)
+
 
 export async function weather() {
     const weatherData = await getWeatherData(...inputValues)
@@ -16,13 +15,13 @@ export async function weather() {
 
 let deg 
 let weekdays = []
-if (inputValues[2] === "metric" ) {
+if (inputValues[3] === "metric" ) {
       deg = "\u00B0C";
     } else {
       deg = "\u00B0F";
     }
  
-const populateDom = (() => {
+const populateDom = () => {
    
  for (let i = 0; i < 7; i++) {
        const forecastDiv = document.getElementById("forecast");
@@ -45,6 +44,8 @@ const populateDom = (() => {
           `${weekDay}: ${data[i].conditions} -> ${data[i].tempmin}${deg} - ${data[i].tempmax}${deg}`
         );
       }
+      locationHeading.textContent =`${inputValues[0]} Weather`
+locationHeader.appendChild(locationHeading)
       const forecastCard = document.createElement("div");
       forecastCard.className ="forecast-card";
       forecastCard.id = `day-${i}`
@@ -59,11 +60,11 @@ const populateDom = (() => {
 
      //CONSOLE LOG TODAY'S WEATHER DETAILS
     const today = weatherData.days[0];
-    console.log(`Dom: ${today}`)
+ 
     const todaysWeather = document.getElementById("today");
     todaysWeather.innerHTML = `<h4>Today's weather</h4><p>${today.description}</p></br><h5>Temperatures:</h5><p>Now: ${today.temp}${deg} (feels like ${today.feelslike}${deg})</p><p>Max: ${today.tempmax}${deg} (feels like ${today.feelslikemax}${deg})</p><p>Min: ${today.tempmin}${deg} (feels like ${today.feelslikemin}${deg})</p></br><p>Sunrise: ${today.sunrise}</p><p>Sunset: ${today.sunset}</p></br><p>Chance of rain: ${today.precipprob}%</p></br><p>Humidity: ${today.humidity}%</p><p>Wind speed: ${today.windspeed} km/h</p><p>UV Index: ${today.uvindex}</p>`
-})();
-
+};
+populateDom();
 }
 // console.log(data)
 // const forecastDiv = document.getElementById("forecast");
