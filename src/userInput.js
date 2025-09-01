@@ -11,7 +11,7 @@ const unitButton = document.getElementById("unit-button");
 
 const forecastDiv = document.getElementById("forecast")
 
-let inputValues = [];
+export let inputValues = ['Sydney','','','metric'];
 
 // export const getData = () => {
 //   submitButton.addEventListener("click", () => {
