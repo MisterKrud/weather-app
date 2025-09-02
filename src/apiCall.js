@@ -1,20 +1,28 @@
 import { components } from "./dataComponents";
+import { success } from "./getLocation";
 import { location } from "./getLocation";
 
 
-
+// const coords =  success()
 const dataComponents = components;
-const inputValues = components.inputValues
-// const locationHeading = document.createElement("h3")
-// const locationHeader = document.getElementById('location-header');
+const inputValues = () => components.inputValues
+// // const locationHeading = document.createElement("h3")
+// // const locationHeader = document.getElementById('location-header');
 
-// const currentLocation = location()
+// // const currentLocation = location()
+
+// const locationGetter = async () => {
+//   const response = await fetch(`${dataComponents.locationIqUrlA}${dataComponents.locationIqKey}&lat=${coords.lat}$lon=${coords.lon}$format=json&`) 
+//   const locationData = await response.json();
+//   console.log(`LOCATION DATA: ${locationData}`)
+// }
 
 
-export async function getWeatherData(...inputValues) {
+
+export async function getWeatherData() {
 
 
-  console.log(inputValues);
+  console.log(inputValues());
   // console.log(loc, dateA, dateB, unit);
 
   const getWeather = async () => {
@@ -45,11 +53,11 @@ export async function getWeatherData(...inputValues) {
     // })();
 
     console.log(
-      `${dataComponents.baseURL}${inputValues[0]}${inputValues[1]}${inputValues[2]}?unitGroup=${inputValues[3]}&include=days%2Chours%2Ccurrent&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`
+      `${dataComponents.baseURL}${components.inputValues[0]}${components.inputValues[1]}${components.inputValues[2]}?unitGroup=${components.inputValues[3]}&include=days%2Chours%2Ccurrent&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`
     );
 
     const response = await fetch(
-      `${dataComponents.baseURL}${inputValues[0]}${inputValues[1]}${inputValues[2]}?unitGroup=${inputValues[3]}&include=days%2Chours%2Ccurrent&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`,
+      `${dataComponents.baseURL}${components.inputValues[0]}${components.inputValues[1]}${components.inputValues[2]}?unitGroup=${components.inputValues[3]}&include=days%2Chours%2Ccurrent&key=J5R7RYMK57B597QLPD9UF4W8Y&contentType=json`,
       { mode: "cors" }
     );
 
@@ -74,3 +82,5 @@ export async function getWeatherData(...inputValues) {
 
   return getWeather();
 }
+
+

@@ -1,5 +1,10 @@
 
 /* Initial project styling */
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +15,7 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: grid;
   justify-content: center;
+  font-family:"Work Sans", Arial, Helvetica, sans-serif;
    /* padding: 0.5rem; */
 }
 
@@ -17,7 +23,9 @@ body {
   padding: 0;
   max-width: 1080px
 }
-
+button, select {
+  font-family:"Work Sans", Arial, Helvetica, sans-serif;
+}
 
 /* div {
 
@@ -25,10 +33,11 @@ body {
 } */
 
 button {
+  font-family:"Work Sans", Arial, Helvetica, sans-serif;
   height: 35px;
   width: 90px;
   margin: 5px;
-  font-weight: bold;
+  /* font-weight: bold; */
   border-radius: 5px;
   box-shadow: 2px 2px 5px darkgrey;
   border: none;
@@ -126,6 +135,7 @@ select,
   border: none;
   min-width: 8rem;
   color: black;
+  
 }
 
 select {
@@ -135,6 +145,7 @@ select {
   transition: 0.4s;
   padding-top: .2rem;
   box-shadow: 2px 2px 4px darkgray;
+  
   
 }
 
@@ -150,6 +161,7 @@ option{
   outline: none;
   background-color: rgb(253, 253, 253);
   border: .1rem solid #ddd;
+  font-weight: normal;
   
 }
  #hourly{

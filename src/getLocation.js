@@ -3,7 +3,7 @@ import { components } from "./dataComponents";
 
 
 
-const success = (pos) => {
+export const success = (pos) => {
     const crd = pos.coords;
     console.log(crd)
     const lat = crd.latitude
@@ -15,7 +15,7 @@ const success = (pos) => {
     console.log(`here are the coordinates: ${crd}`)
     console.log(`input values from locator: ${components.inputValues}`)
     weather()
-    return crd
+    return {lat, lon}
   }
 
 

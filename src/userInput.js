@@ -12,8 +12,11 @@ const locationButton = document.getElementById("location-button");
 const unitButton = document.getElementById("unit-button");
 
 const forecastDiv = document.getElementById("forecast")
+const informationDiv = document.getElementById("information");
+const hourlyDiv = document.getElementById("hourly")
+const today = document.getElementById("today")
 
-let  inputValues = components.inputValues
+
 
 // export const getData = () => {
 //   submitButton.addEventListener("click", () => {
@@ -35,10 +38,16 @@ export const userInputs = () =>{
 
 
   locationButton.addEventListener("click", () => {
-    inputValues[0] = locationInput.value;
-    forecastDiv.innerHTML =''
-    console.log(`userINputs ${inputValues[0]}`);
+    if (!locationInput.value){
+      components.inputValues[0]= "Melbourne"
+    } else {
+   components.inputValues[0] = locationInput.value;
+    }
+    clearWeatherInformation();
+    console.log(`userInputs ${components.inputValues[0]}`);
     console.log(locationInput.value);
+    console.log(components.inputValues)
+    
  
    weather();
     
@@ -54,7 +63,7 @@ const unitOptions = unitInput.querySelectorAll('option');
 
   
   opt.addEventListener("click", () => {
-    forecastDiv.innerHTML =''
+  clearWeatherInformation()
    let unitValue 
    if(opt.value === "celsius"){
     unitValue = "metric"
@@ -65,12 +74,17 @@ const unitOptions = unitInput.querySelectorAll('option');
    }
    console.log(opt.value)
     
-    inputValues[3] = unitValue;
+    components.inputValues[3] = unitValue;
   
     weather();
-    console.log(inputValues)
+    console.log(components.inputValues)
   });
 })
 };
 
 
+const clearWeatherInformation = () =>{
+   forecastDiv.innerHTML =''
+    today.innerHTML =''
+    hourlyDiv.innerHTML=''
+}
