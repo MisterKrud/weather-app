@@ -1,4 +1,5 @@
 import "./styles.css";
+import {location } from "./getLocation.js";
 import {  weatherInfo, getDate2, getUnits, fetchUrl, getWeatherData} from "./apiCall.js";
 import {userInputs } from "./userInput";
 import { weather } from "./domEvents.js";
