@@ -4,13 +4,18 @@ import { format, fromUnixTime, getDay } from "date-fns";
 
 
 const inputValues = components.inputValues
+const informationContainer = document.getElementById("information");
+const hourlyContainer = document.getElementById("hourly")
 const locationHeading = document.createElement("h3")
 const locationHeader = document.getElementById('location-header');
+const todaysWeather = document.getElementById("today");
+const forecastDiv = document.getElementById("forecast");
 
 
  const weatherData = await getWeatherData(...inputValues)
     const data = weatherData.days
     const today = data[0];
+    console.log(today)
 let deg 
 let weekdays
 
@@ -30,21 +35,16 @@ const populateDom = () => {
    
 sevenDayForecast();
 currentWeather();
-   
+hourlyForecast();
 };
+
 populateDom();
 }
-// console.log(data)
-// const forecastDiv = document.getElementById("forecast");
-// const today = document.getElementById("today");
 
-// export const dataInfo = () => {
-//     console.log(data)
-// }
 
 const sevenDayForecast = () => {
  for (let i = 0; i < 7; i++) {
-       const forecastDiv = document.getElementById("forecast");
+       
      
       const dateFromUnix = fromUnixTime(data[i].datetimeEpoch);
       const weekDay = format(dateFromUnix, "eeee");
@@ -81,7 +81,7 @@ const sevenDayForecast = () => {
 const currentWeather = ()  => {
    
  
-    const todaysWeather = document.getElementById("today");
+    
     const todaysHeader =document.createElement("div");
       todaysHeader.id = "toays-header";
     const todaysTemps = document.createElement("div");
@@ -113,3 +113,17 @@ const currentWeather = ()  => {
     todaysPrecip.innerHTML = `<p>Chance of rain: ${today.precipprob}%</p></br>`
     todaysOther.InnerHTML = `<p>Humidity: ${today.humidity}%</p><p>Wind speed: ${today.windspeed} km/h</p><p>UV Index: ${today.uvindex}</p>`
 }
+
+const hourlyForecast = () => {
+ for (let i = 6; i < today.hours.length+1; i+=3) {
+    const hourDiv = document.createElement("div");
+    hourDiv.className = "hour";
+    const thisHour = today.hours[i]
+    hourDiv.textContent = `${thisHour.datetime}\nCurrently ${thisHour.temp}${deg}\nFeels like ${thisHour.feelslike}${deg}\nRain: ${thisHour.precipprob}%`
+    hourlyContainer.appendChild(hourDiv)
+ }
+  };
+  
+
+
+ 

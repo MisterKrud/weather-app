@@ -150,13 +150,13 @@ option{
   
 }
 
-#forecast{
+#forecast, #hourly{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))  ;
   font-size: .8rem;
 }
 
-.forecast-card{
+.forecast-card, .hour{
   background-color: #ddd;
   border-radius: 5px;
   margin: 5px;
@@ -188,4 +188,11 @@ option{
 
 #today h4, h5{
   padding-bottom: .5rem ;
+}
+
+
+.hour{
+  background-color: deepskyblue;
+  color:gold;
+
 }
