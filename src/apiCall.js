@@ -8,7 +8,7 @@ const inputValues = components.inputValues
 // const locationHeading = document.createElement("h3")
 // const locationHeader = document.getElementById('location-header');
 
-const currentLocation = location()
+// const currentLocation = location()
 
 
 export async function getWeatherData(...inputValues) {

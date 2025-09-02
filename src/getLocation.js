@@ -9,7 +9,9 @@ const success = (pos) => {
     const lat = crd.latitude
     const lon = crd.longitude
     console.log(lat,lon);
-    components.inputValues[0] = crd
+    const coordinates = toString(lat, lon)
+    console.log(coordinates)
+    components.inputValues[0] = (coordinates)
     console.log(`here are the coordinates: ${crd}`)
     console.log(`input values from locator: ${components.inputValues}`)
     weather()

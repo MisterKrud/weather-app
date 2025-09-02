@@ -15,7 +15,9 @@ const forecastDiv = document.getElementById("forecast");
  const weatherData = await getWeatherData(...inputValues)
     const data = weatherData.days
     const today = data[0];
-    console.log(today)
+    console.log(`inputVales from DOM ${inputValues}`)
+    const theHour = today.hours[0]
+    console.log(theHour.datetime)
 let deg 
 let weekdays
 
@@ -51,7 +53,7 @@ const sevenDayForecast = () => {
       weekdays.push(weekDay);
       if (i === 0) {
         console.log("");
-        console.log(`${inputValues[0].toUpperCase()} 7 DAY FORECAST`);
+        // console.log(`${inputValues[0].toUpperCase()} 7 DAY FORECAST`);
         console.log(
           `${weekDay} (Today): ${data[i].conditions} -> ${data[i].tempmin}${deg} - ${data[i].tempmax}${deg}`
         );
@@ -114,13 +116,16 @@ const currentWeather = ()  => {
     todaysOther.InnerHTML = `<p>Humidity: ${today.humidity}%</p><p>Wind speed: ${today.windspeed} km/h</p><p>UV Index: ${today.uvindex}</p>`
 }
 
-const hourlyForecast = () => {
- for (let i = 6; i < today.hours.length+1; i+=3) {
+const hourlyForecast = async() => {
+ for (let i = 6; i < today.hours.length; i+=3) {
     const hourDiv = document.createElement("div");
+     hourlyContainer.appendChild(hourDiv)
     hourDiv.className = "hour";
     const thisHour = today.hours[i]
-    hourDiv.textContent = `${thisHour.datetime}\nCurrently ${thisHour.temp}${deg}\nFeels like ${thisHour.feelslike}${deg}\nRain: ${thisHour.precipprob}%`
-    hourlyContainer.appendChild(hourDiv)
+    console.log('this hour')
+    console.log(thisHour.datetime)
+    hourDiv.textContent =`${thisHour.datetime}\nCurrently ${thisHour.temp}${deg}\nFeels like ${thisHour.feelslike}${deg}\nRain: ${thisHour.precipprob}%`
+   
  }
   };
   
