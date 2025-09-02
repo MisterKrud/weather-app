@@ -8,13 +8,18 @@ const locationHeading = document.createElement("h3")
 const locationHeader = document.getElementById('location-header');
 
 
+ const weatherData = await getWeatherData(...inputValues)
+    const data = weatherData.days
+    const today = data[0];
+let deg 
+let weekdays
 
 export async function weather() {
-    const weatherData = await getWeatherData(...inputValues)
-    const data = weatherData.days
+   
 
-let deg 
-let weekdays = []
+
+
+weekdays = []
 if (inputValues[3] === "metric" ) {
       deg = "\u00B0C";
     } else {
@@ -23,6 +28,21 @@ if (inputValues[3] === "metric" ) {
  
 const populateDom = () => {
    
+sevenDayForecast();
+currentWeather();
+   
+};
+populateDom();
+}
+// console.log(data)
+// const forecastDiv = document.getElementById("forecast");
+// const today = document.getElementById("today");
+
+// export const dataInfo = () => {
+//     console.log(data)
+// }
+
+const sevenDayForecast = () => {
  for (let i = 0; i < 7; i++) {
        const forecastDiv = document.getElementById("forecast");
      
@@ -45,7 +65,7 @@ const populateDom = () => {
         );
       }
       locationHeading.textContent =`${inputValues[0]} Weather`
-locationHeader.appendChild(locationHeading)
+        locationHeader.appendChild(locationHeading)
       const forecastCard = document.createElement("div");
       forecastCard.className ="forecast-card";
       forecastCard.id = `day-${i}`
@@ -56,10 +76,10 @@ locationHeader.appendChild(locationHeading)
       dayInfo.innerHTML = `<p>${data[i].conditions}</p> <p>${data[i].tempmin}${deg} - ${data[i].tempmax}${deg}</p>`
       forecastCard.append(dayHeading, dayInfo);
     }
+}
 
-
-     //CONSOLE LOG TODAY'S WEATHER DETAILS
-    const today = weatherData.days[0];
+const currentWeather = ()  => {
+   
  
     const todaysWeather = document.getElementById("today");
     const todaysHeader =document.createElement("div");
@@ -92,13 +112,4 @@ locationHeader.appendChild(locationHeading)
     todaysSun.innerHTML = `<p>Sunrise: ${today.sunrise}</p><p>Sunset: ${today.sunset}</p></br>`
     todaysPrecip.innerHTML = `<p>Chance of rain: ${today.precipprob}%</p></br>`
     todaysOther.InnerHTML = `<p>Humidity: ${today.humidity}%</p><p>Wind speed: ${today.windspeed} km/h</p><p>UV Index: ${today.uvindex}</p>`
-};
-populateDom();
 }
-// console.log(data)
-// const forecastDiv = document.getElementById("forecast");
-// const today = document.getElementById("today");
-
-// export const dataInfo = () => {
-//     console.log(data)
-// }

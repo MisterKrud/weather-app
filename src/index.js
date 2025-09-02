@@ -7,7 +7,7 @@ import { weather } from "./domEvents.js";
 
 console.log('Working')
 
-location()
+// location()
 // const location = (() => navigator.geolocation.getCurrentPosition(success))()
 
 
