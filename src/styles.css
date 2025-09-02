@@ -197,8 +197,11 @@ option{
 }
 
 #location-header h3{
-  text-align: center;
-  padding: 2rem;
+  /* text-align: center; */
+  padding: 1rem;
+  background-color: dodgerblue;
+  color:azure;
+  text-decoration-style: double;
 }
 
 #today-container{
@@ -212,6 +215,7 @@ option{
   padding: 1.5rem 3rem;
   /* margin-top: 1.3rem; */
   border-radius: 15px;
+  width: 400px;
 }
 
 #today h4, h5{
@@ -221,6 +225,5 @@ option{
 
 .hour{
   background-color: deepskyblue;
-  color:gold;
-
+ 
 }
