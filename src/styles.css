@@ -149,14 +149,27 @@ option{
   border: .1rem solid #ddd;
   
 }
-
-#forecast{
+ #hourly{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))  ;
   font-size: .8rem;
 }
 
-.forecast-card{
+#forecast{
+    display: grid;
+  grid-template-rows: auto;
+  font-size: .8rem;
+
+}
+
+#information{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  justify-self: center;
+  
+}
+
+.forecast-card, .hour{
   background-color: #ddd;
   border-radius: 5px;
   margin: 5px;
@@ -175,17 +188,24 @@ option{
 
 #today-container{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   
 }
 
 #today{
   background-color:#eeeeee;
   padding: 1.5rem 3rem;
-  margin-top: 1.3rem;
+  /* margin-top: 1.3rem; */
   border-radius: 15px;
 }
 
 #today h4, h5{
   padding-bottom: .5rem ;
+}
+
+
+.hour{
+  background-color: deepskyblue;
+  color:gold;
+
 }

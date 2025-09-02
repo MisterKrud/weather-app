@@ -1,34 +1,21 @@
-// import { components } from "./dataComponents";
-// const inputValues = components.inputValues
+import { weather } from "./domEvents";
+import { components } from "./dataComponents";
 
 
 
-
-
-
-
-
-  function success(pos) {
+const success = (pos) => {
     const crd = pos.coords;
-
-    const coords = `${crd.latitude}, ${crd.longitude}`;
-    // const lon = crd.longitude
-    console.log(`Success:${coords}`);
-    return coords;
+    console.log(crd)
+    const lat = crd.latitude
+    const lon = crd.longitude
+    console.log(lat,lon);
+    components.inputValues[0] = crd
+    console.log(`here are the coordinates: ${crd}`)
+    console.log(`input values from locator: ${components.inputValues}`)
+    weather()
+    return crd
   }
 
-  function error() {
-    return "Melbourne"
-  }
 
-export  const location = () => {
-    if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(success, error);
-       
-        return success
-    } else {
-        return "Sydney"
-    }
-   
-}
-
+export const location = () => navigator.geolocation.getCurrentPosition(success)
+    
