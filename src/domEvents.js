@@ -8,7 +8,7 @@ const informationContainer = document.getElementById("information");
 const hourlyContainer = document.getElementById("hourly")
 const locationHeading = document.createElement("h3")
 const locationHeader = document.getElementById('location-header');
-const todaysWeather = document.getElementById("today");
+const todaysWeather = document.getElementById("todays-weather");
 const forecastDiv = document.getElementById("forecast");
 
 
@@ -135,7 +135,7 @@ const hourlyForecast = async(today, deg) => {
     const thisHour = today.hours[i]
     console.log('this hour')
     console.log(thisHour.datetime)
-    hourDiv.textContent =`${thisHour.datetime}\nCurrently ${thisHour.temp}${deg}\nFeels like ${thisHour.feelslike}${deg}\nRain: ${thisHour.precipprob}%`
+    hourDiv.textContent =`${thisHour.datetime}\n${thisHour.temp}${deg} Feels like: ${thisHour.feelslike}${deg}\nRain: ${thisHour.precipprob}%`
    
  }
   };
