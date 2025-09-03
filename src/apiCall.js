@@ -64,9 +64,9 @@ export async function getWeatherData() {
     const weatherData = await response.json();
 
     console.log("function activated");
-    console.log(`weatherData ${weatherData}`);
+    
     // console.log(`Date range: ${dateA} to ${dateB}`);
-    console.log(`Location: ${weatherData.address}`);
+    console.log(weatherData)
 
     try {
       console.log(

@@ -10,6 +10,7 @@ const locationHeading = document.createElement("h3")
 const locationHeader = document.getElementById('location-header');
 const todaysWeather = document.getElementById("todays-weather");
 const forecastDiv = document.getElementById("forecast");
+const weatherNowDiv = document.getElementById("now");
 
 
 
@@ -31,9 +32,9 @@ export async function weather() {
    const weatherData = await getWeatherData(...components.inputValues)
     const data = weatherData.days
     const today = data[0];
-    console.log(`inputVales from DOM ${components.inputValues}`)
     const theHour = today.hours[0]
-    console.log(theHour.datetime)
+    const rightNow = weatherData.currentConditions;
+    
 
 
 
@@ -49,6 +50,7 @@ const populateDom = () => {
 sevenDayForecast(data, deg);
 currentWeather(today, deg);
 hourlyForecast(today, deg);
+weatherRightNow(rightNow, deg);
 };
 
 populateDom();
@@ -135,10 +137,33 @@ const hourlyForecast = async(today, deg) => {
     const thisHour = today.hours[i]
     console.log('this hour')
     console.log(thisHour.datetime)
-    hourDiv.textContent =`${thisHour.datetime}\n${thisHour.temp}${deg} Feels like: ${thisHour.feelslike}${deg}\nRain: ${thisHour.precipprob}%`
+    hourDiv.innerHTML =
+    `<div>${thisHour.datetime}</div>
+    <div>${thisHour.temp}${deg}</div>
+    <div>${thisHour.conditions}</div>
+   
+
+    <div>Rain: ${thisHour.precipprob}%</div>
+    <div>${thisHour.icon}`
+    
    
  }
   };
+
+  const weatherRightNow = async(rightNow, deg) =>{
+    const nowHeader = document.createElement("div");
+    const nowTemp = document.createElement("div");
+    const nowHumidity = document.createElement("div");
+    const nowConditions = document.createElement("div")
+    weatherNowDiv.append(nowHeader, nowTemp, nowConditions, nowHumidity)
+
+    nowHeader.innerHTML = `<h4 style="font-weight: bold;">Now: <span style = "font-weight: normal;">${rightNow.conditions}</span></h4>`
+    nowTemp.innerHTML =`<p style = "font-weight: bold">${rightNow.temp}${deg} <span style = "font-weight: normal; font-size: 0.9rem;"> - feels like ${rightNow.feelslike}${deg}</span></p> `
+
+   
+    nowHumidity.innerHTML = `<p>Humidity: <span style="font-weight: bold;">${rightNow.humidity}</span></p></br>`
+
+  }
   
 
 

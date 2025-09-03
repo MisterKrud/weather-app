@@ -13,25 +13,24 @@
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  /* display: grid;
-  
-    justify-content: center; */
+  display: grid;
+  justify-content: center;
   font-family:"Work Sans", Arial, Helvetica, sans-serif;
    /* padding: 0.5rem; */
 }
 
 #content{
   padding: 0;
-  /* max-width: 1080px */
+  max-width: 1080px
 }
 button, select {
   font-family:"Work Sans", Arial, Helvetica, sans-serif;
 }
 
-/* div {
-
- border: .05rem solid gray;
-} */
+div {
+  padding: 4px;
+ /* border: .05rem solid gray; */
+}
 
 button {
   font-family:"Work Sans", Arial, Helvetica, sans-serif;
@@ -167,7 +166,7 @@ option{
 }
  #hourly{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))  ;
   font-size: .8rem;
 }
 
@@ -226,6 +225,10 @@ option{
 
 .hour{
   background-color: deepskyblue;
-  
  
+}
+
+#now div, #now h4{
+  margin:0;
+  padding:0;
 }
