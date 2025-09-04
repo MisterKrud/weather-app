@@ -83,8 +83,8 @@ const unitOptions = unitInput.querySelectorAll('option');
 };
 
 
-const clearWeatherInformation = () =>{
+export const clearWeatherInformation = () =>{
    forecastDiv.innerHTML =''
-    today.innerHTML =''
+  
     hourlyDiv.innerHTML=''
 }

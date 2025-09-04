@@ -1,6 +1,7 @@
 import { components } from "./dataComponents";
 import { getWeatherData } from "./apiCall";
 import { format, fromUnixTime, getDay } from "date-fns";
+import { clearWeatherInformation } from "./userInput";
 
 
 
@@ -11,6 +12,7 @@ const locationHeader = document.getElementById('location-header');
 const todaysWeather = document.getElementById("todays-weather");
 const forecastDiv = document.getElementById("forecast");
 const weatherNowDiv = document.getElementById("now");
+const today = document.getElementById("today")
 
 
 
@@ -45,8 +47,9 @@ if (components.inputValues[3] === "metric" ) {
       deg = "\u00B0F";
     }
  
-const populateDom = () => {
-   
+const populateDom = async () => {
+
+clearWeatherInformation();   
 sevenDayForecast(data, deg);
 currentWeather(today, deg);
 hourlyForecast(today, deg);
@@ -90,12 +93,13 @@ const sevenDayForecast = async (data, deg) => {
       const dayInfo = document.createElement("div");
       dayInfo.innerHTML = `<p>${data[i].conditions}</p> <p>${data[i].tempmin}${deg} - ${data[i].tempmax}${deg}</p>`
       forecastCard.append(dayHeading, dayInfo);
+      forecastCard.classList.add(`${data[i].icon}`)
     }
 }
 
 const currentWeather = (today, deg)  => {
    
- 
+todaysWeather.innerHTML = "";
     
     const todaysHeader =document.createElement("div");
       todaysHeader.id = "todays-header";
@@ -126,7 +130,7 @@ const currentWeather = (today, deg)  => {
     todaysTemps.innerHTML = `<h5>Temperatures:</h5><p>Now: ${today.temp}${deg} (feels like ${today.feelslike}${deg})</p><p>Max: ${today.tempmax}${deg} (feels like ${today.feelslikemax}${deg})</p><p>Min: ${today.tempmin}${deg} (feels like ${today.feelslikemin}${deg})</p></br>`
     todaysSun.innerHTML = `<p>Sunrise: ${today.sunrise}</p><p>Sunset: ${today.sunset}</p></br>`
     todaysPrecip.innerHTML = `<p>Chance of rain: ${today.precipprob}%</p></br>`
-    todaysOther.InnerHTML = `<p>Humidity: ${today.humidity}%</p><p>Wind speed: ${today.windspeed} km/h</p><p>UV Index: ${today.uvindex}</p>`
+    todaysOther.innerHTML = `<p>Humidity: ${today.humidity}%</p><p>Wind speed: ${today.windspeed} km/h</p><p>UV Index: ${today.uvindex}</p>`
 }
 
 const hourlyForecast = async(today, deg) => {
@@ -137,6 +141,13 @@ const hourlyForecast = async(today, deg) => {
     const thisHour = today.hours[i]
     console.log('this hour')
     console.log(thisHour.datetime)
+     if( i <=9){
+        hourDiv.classList.add("morning");
+    } else if (i <= 15){
+        hourDiv.classList.add("afternoon")
+    } else {
+        hourDiv.classList.add("night")
+    }
     hourDiv.innerHTML =
     `<div>${thisHour.datetime}</div>
     <div>${thisHour.temp}${deg}</div>
@@ -150,7 +161,8 @@ const hourlyForecast = async(today, deg) => {
  }
   };
 
-  const weatherRightNow = async(rightNow, deg) =>{
+  const weatherRightNow = (rightNow, deg) =>{
+    weatherNowDiv.innerHTML = "";
     const nowHeader = document.createElement("div");
     const nowTemp = document.createElement("div");
     const nowHumidity = document.createElement("div");

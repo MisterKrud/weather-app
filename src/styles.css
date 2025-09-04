@@ -3,7 +3,25 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+  --gold: #F3BC51;
+  --orange: #efa81a;
+  --richorange: #e59e10;
+  --yellow: #ebdabf;
+  --lemonyellow: #ead885;
+  --paleblue: #e9f0f5;
+  --grayblue: #3a637e;
+  --lightblue: #cee3f3;
+  --coldblue: #bddaef;
+   --midblue: #2c79b5;
+   --darkblue: #143752;
+  --dimgray: #60696f;
+  --lightgray: #cdcdd0;
+ 
+/*old colours*/
 
+
+}
 
 * {
   margin: 0;
@@ -76,7 +94,8 @@ input:focus{
  
   padding: 0.8rem 1.5rem;
   flex-wrap: wrap;
-  background-color: #375bd4;
+  /* background-color: #375bd4; */
+  background-color: var(--grayblue);
   color:white;
   font-weight: bold;
 }
@@ -185,13 +204,20 @@ option{
 }
 
 .forecast-card, .hour{
-  background-color: #ddd;
+
   border-radius: 5px;
   margin: 5px;
   padding: 5px 10px;
   line-height: 1.5rem;
 }
+.forecast-card{
+box-shadow: 1px 1px 3px 2px var(--lightgray);
+}
 
+.hour{
+  box-shadow: 0.5px 0.4px 1.5px 1px var(--lightgray);
+
+}
 .forecast-card h4{
   font-size: .9rem;
 }
@@ -199,7 +225,8 @@ option{
 #location-header h3{
   /* text-align: center; */
   padding: 1rem;
-  background-color: dodgerblue;
+  /* background-color: dodgerblue; */
+  background-color: var(--midblue);
   color:azure;
   text-decoration-style: double;
 }
@@ -232,3 +259,35 @@ option{
   margin:0;
   padding:0;
 }
+
+/*Types of weather & times*/
+.warm {
+  background-color: var(--lemonyellow);
+}
+
+.cold {
+  background-color: var(--coldblue);
+}
+
+.early {
+  background-color: var(--coldblue);
+}
+
+.morning {
+  background-color: var(--lemonyellow);
+}
+
+/* .midday {
+  background-color: #e3cc65
+} */
+
+.afternoon {
+  background-color: var(--gold);
+}
+
+.night {
+  background-color:#205A83 ;
+  color: white;
+}
+
+
