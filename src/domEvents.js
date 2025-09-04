@@ -4,6 +4,10 @@ import { format, fromUnixTime, getDay } from "date-fns";
 import { clearWeatherInformation } from "./userInput";
 
 
+const getIcons = async(iconName) =>{
+    const icons = await import(`./assets/icons/${iconName}.svg`);
+    return icons.default
+}
 
 const informationContainer = document.getElementById("information");
 const hourlyContainer = document.getElementById("hourly")
@@ -49,6 +53,7 @@ if (components.inputValues[3] === "metric" ) {
  
 const populateDom = async () => {
 
+
 clearWeatherInformation();   
 sevenDayForecast(data, deg);
 currentWeather(today, deg);
@@ -63,7 +68,7 @@ return weatherData
 
 const sevenDayForecast = async (data, deg) => {
  for (let i = 0; i < 7; i++) {
-   
+        const iconName = data[i].icon;
       const dateFromUnix = fromUnixTime(data[i].datetimeEpoch);
       const weekDay = format(dateFromUnix, "eeee");
       weekdays.push(weekDay);
