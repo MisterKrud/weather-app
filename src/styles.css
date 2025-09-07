@@ -87,7 +87,24 @@ input:focus{
 }
 
 .icon{
-  width: 2em;
+  width: 2rem;
+}
+
+.big-icon{
+  width: 4rem;
+}
+
+.icon, .big-icon{
+  position: absolute;
+  right: .3rem;
+  top: .5rem;
+  padding: .2rem; 
+}
+
+
+
+.forecast-card, .hour, .now, .todays-weather{
+  position: relative;
 }
 
 #top-bar{

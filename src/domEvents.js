@@ -1,6 +1,6 @@
 import { components } from "./dataComponents";
 import { getWeatherData } from "./apiCall";
-import { format, fromUnixTime, getDay } from "date-fns";
+import { format, fromUnixTime, getDay, getTime } from "date-fns";
 import { clearWeatherInformation } from "./userInput";
 
 
@@ -140,7 +140,7 @@ const sevenDayForecast = async (data, deg) => {
     }
 }
 
-const currentWeather = (today, deg)  => {
+const currentWeather = async(today, deg)  => {
    
 todaysWeather.innerHTML = "";
     
@@ -166,6 +166,7 @@ todaysWeather.innerHTML = "";
     todaysForecastDivs.forEach((div) => {
      
       div.className = "todays-forecast"
+
   
     });
 
@@ -174,7 +175,12 @@ todaysWeather.innerHTML = "";
     todaysSun.innerHTML = `<p>Sunrise: ${today.sunrise}</p><p>Sunset: ${today.sunset}</p></br>`
     todaysPrecip.innerHTML = `<p>Chance of rain: ${today.precipprob}%</p></br>`
     todaysOther.innerHTML = `<p>Humidity: ${today.humidity}%</p><p>Wind speed: ${today.windspeed} km/h</p><p>UV Index: ${today.uvindex}</p>`
-}
+const iconName = today.icon;
+    const iconToGet = await getIcons(iconName)
+    
+   todaysWeather.appendChild(renderIcon(iconToGet))
+    todaysWeather.querySelector("img").className = ("big-icon");
+  }
 
 const hourlyForecast = async(today, deg) => {
   
@@ -183,28 +189,34 @@ const hourlyForecast = async(today, deg) => {
      hourlyContainer.appendChild(hourDiv)
     hourDiv.className = "hour";
     const thisHour = today.hours[i]
+     const timeFromUnix = fromUnixTime(thisHour.datetimeEpoch);
+      const currentTime = format(timeFromUnix, "p");
     const iconName = thisHour.icon
     console.log('this hour')
     console.log(thisHour.datetime)
+
      if( i <=9){
         hourDiv.classList.add("morning");
+        
+
     } else if (i <= 15){
         hourDiv.classList.add("afternoon")
     } else {
         hourDiv.classList.add("night")
     }
     hourDiv.innerHTML =
-    `<div>${thisHour.datetime}</div>
+    `<div style = "font-weight: bold;" class = "hour-header">${currentTime}</div>
     <div>${thisHour.temp}${deg}</div>
     <div>${thisHour.conditions}</div>
    
 
-    <div>Rain: ${thisHour.precipprob}%</div>
-    <div>${thisHour.icon}`
+    <div>Rain: ${thisHour.precipprob}%</div>`
+  
 
     const iconToGet = await getIcons(iconName)
     
    hourDiv.appendChild(renderIcon(iconToGet))
+   
  }
   };
 
@@ -222,9 +234,8 @@ const hourlyForecast = async(today, deg) => {
 
    
     nowHumidity.innerHTML = `<p>Humidity: <span style="font-weight: bold;">${rightNow.humidity}</span></p></br>`
- const iconToGet = await getIcons(iconName)
-    
-   weatherNowDiv.appendChild(renderIcon(iconToGet))
+ 
+
   }
   
 
