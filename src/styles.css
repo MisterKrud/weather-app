@@ -103,7 +103,7 @@ input:focus{
 
 
 
-.forecast-card, .hour, .now, .todays-weather{
+.forecast-card, .hour, .now, #todays-weather{
   position: relative;
 }
 
