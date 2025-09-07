@@ -4,10 +4,8 @@ import { format, fromUnixTime, getDay } from "date-fns";
 import { clearWeatherInformation } from "./userInput";
 
 
-const getIcons = async(iconName) =>{
-    const icons = await import(`./assets/icons/${iconName}.svg`);
-    return icons.default
-}
+
+
 
 const informationContainer = document.getElementById("information");
 const hourlyContainer = document.getElementById("hourly")
@@ -18,7 +16,24 @@ const forecastDiv = document.getElementById("forecast");
 const weatherNowDiv = document.getElementById("now");
 const today = document.getElementById("today")
 
+const renderIcon = (iconData) =>{
+  if (iconData){
+const img =  document.createElement("img");
+img.src = iconData
+console.log('iconData...')
+console.log(iconData)
+img.className ='icon'
+return img
+}
+}
 
+const getIcons = async(iconName) =>{
+    const icons = await import(`./assets/icons/${iconName}.svg`);
+    console.log('getIcons...')
+    console.log(icons.default)
+    return icons.default
+    
+}
 
 // const weatherData = await getWeatherData(...components.inputValues)
 //     const data = weatherData.days
@@ -26,6 +41,7 @@ const today = document.getElementById("today")
 //     console.log(`inputVales from DOM ${components.inputValues}`)
 //     const theHour = today.hours[0]
 //     console.log(theHour.datetime)
+
 
 
  
@@ -40,7 +56,18 @@ export async function weather() {
     const today = data[0];
     const theHour = today.hours[0]
     const rightNow = weatherData.currentConditions;
+
     
+
+
+
+    
+// const weatherIcon = weatherData.icon
+
+// const iconData = await getIcons(weatherIcon) 
+
+
+
 
 
 
@@ -59,6 +86,7 @@ sevenDayForecast(data, deg);
 currentWeather(today, deg);
 hourlyForecast(today, deg);
 weatherRightNow(rightNow, deg);
+renderIcon(iconData);
 };
 
 populateDom();
@@ -69,6 +97,8 @@ return weatherData
 const sevenDayForecast = async (data, deg) => {
  for (let i = 0; i < 7; i++) {
         const iconName = data[i].icon;
+        console.log('icon-name...')
+        console.log(iconName)
       const dateFromUnix = fromUnixTime(data[i].datetimeEpoch);
       const weekDay = format(dateFromUnix, "eeee");
       weekdays.push(weekDay);
@@ -99,6 +129,14 @@ const sevenDayForecast = async (data, deg) => {
       dayInfo.innerHTML = `<p>${data[i].conditions}</p> <p>${data[i].tempmin}${deg} - ${data[i].tempmax}${deg}</p>`
       forecastCard.append(dayHeading, dayInfo);
       forecastCard.classList.add(`${data[i].icon}`)
+
+      const iconToGet = await getIcons(iconName)
+      console.log('iconName')
+      console.log(iconName)
+    
+   forecastCard.appendChild(renderIcon(iconToGet))
+    console.log('iconToGet')
+      console.log(iconToGet)
     }
 }
 
@@ -139,11 +177,13 @@ todaysWeather.innerHTML = "";
 }
 
 const hourlyForecast = async(today, deg) => {
+  
  for (let i = 6; i < today.hours.length; i+=3) {
     const hourDiv = document.createElement("div");
      hourlyContainer.appendChild(hourDiv)
     hourDiv.className = "hour";
     const thisHour = today.hours[i]
+    const iconName = thisHour.icon
     console.log('this hour')
     console.log(thisHour.datetime)
      if( i <=9){
@@ -161,25 +201,30 @@ const hourlyForecast = async(today, deg) => {
 
     <div>Rain: ${thisHour.precipprob}%</div>
     <div>${thisHour.icon}`
+
+    const iconToGet = await getIcons(iconName)
     
-   
+   hourDiv.appendChild(renderIcon(iconToGet))
  }
   };
 
-  const weatherRightNow = (rightNow, deg) =>{
+  const weatherRightNow = async(rightNow, deg) =>{
     weatherNowDiv.innerHTML = "";
     const nowHeader = document.createElement("div");
     const nowTemp = document.createElement("div");
     const nowHumidity = document.createElement("div");
     const nowConditions = document.createElement("div")
     weatherNowDiv.append(nowHeader, nowTemp, nowConditions, nowHumidity)
+    const iconName = rightNow.icon
 
     nowHeader.innerHTML = `<h4 style="font-weight: bold;">Now: <span style = "font-weight: normal;">${rightNow.conditions}</span></h4>`
     nowTemp.innerHTML =`<p style = "font-weight: bold">${rightNow.temp}${deg} <span style = "font-weight: normal; font-size: 0.9rem;"> - feels like ${rightNow.feelslike}${deg}</span></p> `
 
    
     nowHumidity.innerHTML = `<p>Humidity: <span style="font-weight: bold;">${rightNow.humidity}</span></p></br>`
-
+ const iconToGet = await getIcons(iconName)
+    
+   weatherNowDiv.appendChild(renderIcon(iconToGet))
   }
   
 

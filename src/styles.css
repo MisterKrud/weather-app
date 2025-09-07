@@ -86,6 +86,10 @@ input:focus{
   padding: .25rem .6rem;
 }
 
+.icon{
+  width: 2em;
+}
+
 #top-bar{
   font-size: .8rem;
   display: flex;
