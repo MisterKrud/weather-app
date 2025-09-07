@@ -88,22 +88,26 @@ input:focus{
 
 .icon{
   width: 2rem;
-}
-
-.big-icon{
-  width: 4rem;
-}
-
-.icon, .big-icon{
   position: absolute;
   right: .3rem;
   top: .5rem;
   padding: .2rem; 
 }
 
+.big-icon{
+  width: 4rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  padding: .2rem; 
+  
+}
 
 
-.forecast-card, .hour, .now, #todays-weather{
+
+
+
+.forecast-card, .hour, #now, #todays-weather, #today-container{
   position: relative;
 }
 
@@ -272,7 +276,7 @@ box-shadow: 1px 1px 3px 2px var(--lightgray);
 
 
 .hour{
-  background-color: deepskyblue;
+  background-color: white;
  
 }
 
@@ -282,7 +286,7 @@ box-shadow: 1px 1px 3px 2px var(--lightgray);
 }
 
 /*Types of weather & times*/
-.warm {
+/* .warm {
   background-color: var(--lemonyellow);
 }
 
@@ -296,19 +300,19 @@ box-shadow: 1px 1px 3px 2px var(--lightgray);
 
 .morning {
   background-color: var(--lemonyellow);
-}
+} */
 
 /* .midday {
   background-color: #e3cc65
 } */
 
-.afternoon {
+/* .afternoon {
   background-color: var(--gold);
 }
 
 .night {
   background-color:#205A83 ;
   color: white;
-}
+} */
 
 
