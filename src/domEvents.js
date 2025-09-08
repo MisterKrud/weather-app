@@ -242,7 +242,7 @@ const hourlyForecast = async(today, deg) => {
     nowHeader.innerHTML = `<h4 style="font-weight: bold;">Right now</h4>
     <p style = "font-weight: normal;">${rightNow.conditions}</p>`
     nowTemp.innerHTML =`<p style = "font-weight: bold; font-size: 1.6rem;">${rightNow.temp}${deg}</p>
-    <p style = "font-weight: normal; font-size: 0.9rem;">feels like ${rightNow.feelslike}${deg}</p> `
+    <p style = "font-weight: normal; font-size: 0.9rem;">Feels like ${rightNow.feelslike}${deg}</p> `
 
    
     // nowHumidity.innerHTML = `<p>Humidity: <span style="font-weight: bold;">${rightNow.humidity}</span></p></br>`
