@@ -173,20 +173,23 @@ todaysWeather.innerHTML = "";
     
       const sunsetTime = fromUnixTime(today.sunsetEpoch);
       const sunriseTime = fromUnixTime(today.sunriseEpoch);
+      const dayOfWeek = fromUnixTime(today.datetimeEpoch);
+     
 
       const formattedSunrise = format(sunsetTime, "p");
       const formattedSunset = format(sunriseTime,"p");
+      const todaysName = format(dayOfWeek, "eeee")
 
-    todaysHeader.innerHTML = `<h4>Today's weather</h4><p>${today.description}</p></br>`
-    todaysTemps.innerHTML = `<h5>Temperatures:</h5><p><p>Max: ${today.tempmax}${deg} (feels like ${today.feelslikemax}${deg})</p><p>Min: ${today.tempmin}${deg} (feels like ${today.feelslikemin}${deg})</p></br>`
+    todaysHeader.innerHTML = `<h4>Today: ${todaysName}</h4><p style = "margin-right: 5rem;">${today.description}</p></br>`
+    todaysTemps.innerHTML = `<p style = "font-size: 1.4rem; font-weight: bold;">${today.tempmax}${deg} - ${today.tempmin}${deg}</p></br>`
     todaysSun.innerHTML = `<p>Sunrise: ${formattedSunrise}</p><p>Sunset: ${formattedSunset}</p></br>`
     todaysPrecip.innerHTML = `<p>Chance of rain: ${today.precipprob}%</p></br>`
     todaysOther.innerHTML = `<p>Humidity: ${today.humidity}%</p><p>Wind speed: ${today.windspeed} km/h</p><p>UV Index: ${today.uvindex}</p>`
 const iconName = today.icon;
     const iconToGet = await getIcons(iconName) 
     
-   todayContainer.appendChild(renderIcon(iconToGet))
-    todayContainer.querySelector("img").className = ("big-icon");
+   todaysWeather.appendChild(renderIcon(iconToGet))
+    todaysWeather.querySelector("img").className = ("big-icon");
   }
 
 const hourlyForecast = async(today, deg) => {

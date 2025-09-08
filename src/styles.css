@@ -278,6 +278,13 @@ box-shadow: 1px 1px 3px 2px var(--lightgray);
   padding-bottom: .5rem ;
 }
 
+#todays-weather{
+  background-color: #ebdabf;
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
+}
+
 
 .hour{
   background-color: white;
