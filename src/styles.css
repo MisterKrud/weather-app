@@ -32,7 +32,7 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: grid;
-  justify-content: center;
+  /* justify-content: center; */
   font-family:"Work Sans", Arial, Helvetica, sans-serif;
    /* padding: 0.5rem; */
 }
@@ -48,10 +48,7 @@ button, select {
   font-family:"Work Sans", Arial, Helvetica, sans-serif;
 }
 
-div {
-  padding: 4px;
- /* border: .05rem solid gray; */
-}
+
 
 button {
   font-family:"Work Sans", Arial, Helvetica, sans-serif;
@@ -213,31 +210,49 @@ option{
 }
  #hourly{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr))  ;
+  grid-template-columns: repeat(auto-fill, 120px)  ;
   font-size: .8rem;
+  margin: 1rem .2rem;
+  justify-content: center;
+  
+
 }
 
 #forecast{
-    display: grid;
-  grid-template-rows: auto;
-  font-size: .8rem;
+  flex: 1 1 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 220px);
+ 
+  justify-content: center;
+ 
+
+ 
+
+
+
+
 
 }
 
 #information{
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  justify-self: center;
-  max-width: 1080px;
+  /* display: grid;
+  grid-template-columns: 1fr 2fr; */
+  display: flex;
+  /* flex-grow: 1; */
+  flex-wrap: wrap-reverse;
+align-items: center;
+  /* width:100%; */
+  /* align-items: flex-end; */
   
 }
 
-.forecast-card, .hour{
+.forecast-card{
 
   border-radius: 5px;
   margin: 5px;
   padding: 5px 10px;
   line-height: 1.5rem;
+  flex-grow: 1;
 }
 .forecast-card{
 box-shadow: 1px 1px 3px 2px var(--lightgray);
@@ -245,6 +260,11 @@ box-shadow: 1px 1px 3px 2px var(--lightgray);
 
 .hour{
   box-shadow: 0.5px 0.4px 1.5px 1px var(--lightgray);
+  background-color: white;
+  margin-bottom: .2rem;
+  
+  padding: 5px 10px;
+  line-height: 1.5rem;
 
 }
 .forecast-card h4{
@@ -260,42 +280,44 @@ box-shadow: 1px 1px 3px 2px var(--lightgray);
   text-decoration-style: double;
 }
 
-#today-container{
-  display: flex;
-  justify-content: flex-start;
+/* #today-container{
   
-}
+  
+} */
 
 #today{
-  background-color:#eeeeee;
-  padding: 1.5rem 3rem;
+  /* background-color:#eeeeee; */
+  padding: 1.5rem;
   /* margin-top: 1.3rem; */
   border-radius: 15px;
-  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-grow: 4;
+  /* width: 400px; */
 }
 
 #today h4, h5{
   padding-bottom: .5rem ;
+  
 }
 
 #todays-weather{
-  background-color: #ebdabf;
+  background-color: var(--paleblue);
   padding: 1rem;
-  border-radius: 1rem;
-  margin-top: 2rem;
+  border-radius: 0 0 1rem;
+  box-shadow:  .6rem .8rem 1rem gray;
+  /* margin-top: 2rem; */
 }
 
 
-.hour{
-  background-color: white;
- 
-}
+
 
 #now{
   background-color: var(--midblue);
   color: white;
-  border-radius: 1rem;
-  box-shadow: 2px 2px 4px gray;
+  border-radius: 1rem 0 0;
+  box-shadow:  .6rem .8rem 2rem gray;
   padding: 1rem;
   margin: 0;
 }

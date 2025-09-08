@@ -15,7 +15,7 @@ const todaysWeather = document.getElementById("todays-weather");
 const forecastDiv = document.getElementById("forecast");
 const weatherNowDiv = document.getElementById("now");
 const today = document.getElementById("today")
-const todayContainer = document.getElementById("today-container");
+// const todayContainer = document.getElementById("today-container");
 
 const renderIcon = (iconData) =>{
   if (iconData){
