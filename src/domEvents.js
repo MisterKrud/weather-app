@@ -236,11 +236,13 @@ const hourlyForecast = async(today, deg) => {
     weatherNowDiv.append(nowHeader, nowTemp, nowConditions, nowHumidity)
     const iconName = rightNow.icon
 
-    nowHeader.innerHTML = `<h4 style="font-weight: bold;">Now: <span style = "font-weight: normal;">${rightNow.conditions}</span></h4>`
-    nowTemp.innerHTML =`<p style = "font-weight: bold">${rightNow.temp}${deg} <span style = "font-weight: normal; font-size: 0.9rem;"> - feels like ${rightNow.feelslike}${deg}</span></p> `
+    nowHeader.innerHTML = `<h4 style="font-weight: bold;">Right now</h4>
+    <p style = "font-weight: normal;">${rightNow.conditions}</p>`
+    nowTemp.innerHTML =`<p style = "font-weight: bold; font-size: 1.6rem;">${rightNow.temp}${deg}</p>
+    <p style = "font-weight: normal; font-size: 0.9rem;">feels like ${rightNow.feelslike}${deg}</p> `
 
    
-    nowHumidity.innerHTML = `<p>Humidity: <span style="font-weight: bold;">${rightNow.humidity}</span></p></br>`
+    // nowHumidity.innerHTML = `<p>Humidity: <span style="font-weight: bold;">${rightNow.humidity}</span></p></br>`
 
    
     const iconToGet = await getIcons(iconName) 
