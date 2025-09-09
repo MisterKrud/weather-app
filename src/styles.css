@@ -100,7 +100,7 @@ input:focus{
 #top-bar{
   font-size: .8rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 0;
   padding: 0.8rem 1.5rem;
   flex-wrap: wrap;
@@ -110,7 +110,7 @@ input:focus{
 }
 
 #top-bar input{
-  height: 1.2rem;
+  height: 1.5rem;
   width: 8rem;
   padding-left: .4rem;
 }
@@ -194,7 +194,7 @@ option{
   flex: 1 1 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, 220px);
- padding: 1.2rem;
+ padding: 1.2rem 0;
   justify-content: center;
 }
 

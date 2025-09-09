@@ -10,8 +10,9 @@ const hourlyDiv = document.getElementById("hourly")
 
 //Get user inputs
 export const userInputs = () =>{
-  locationButton.addEventListener("click", () => {
-    if (!locationInput.value){
+  locationInput.addEventListener("keypress", (e)=> {
+    if (e.key === "Enter") {
+      if (!locationInput.value){
       components.inputValues[0]= "Melbourne"
     } else {
    components.inputValues[0] = locationInput.value;
@@ -21,7 +22,8 @@ export const userInputs = () =>{
     console.log(locationInput.value);
     console.log(components.inputValues)
    weather();
-  });
+    }
+  })
 
   //get unit (Metirc or Imperial)
 const unitOptions = unitInput.querySelectorAll('option');
@@ -43,6 +45,8 @@ const unitOptions = unitInput.querySelectorAll('option');
   });
 })
 };
+
+
 
 //Clear page
 export const clearWeatherInformation = () =>{
