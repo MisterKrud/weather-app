@@ -32,7 +32,7 @@ export const userInputs = () =>{
   })
 
   //get unit (Metric or Imperial)
-// const unitOptions = unitInput.querySelectorAll('option');
+
   unitInput.addEventListener("change", (e) => {
   clearWeatherInformation()
    let unitValue 
