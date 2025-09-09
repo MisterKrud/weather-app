@@ -8,6 +8,8 @@ const locationButton = document.getElementById("location-button");
 const forecastDiv = document.getElementById("forecast")
 const hourlyDiv = document.getElementById("hourly")
 
+let placeName =[]
+
 //Get user inputs
 export const userInputs = () =>{
   locationInput.addEventListener("keypress", (e)=> {
@@ -15,12 +17,16 @@ export const userInputs = () =>{
       if (!locationInput.value){
       components.inputValues[0]= "Melbourne"
     } else {
-   components.inputValues[0] = locationInput.value;
+      const userLocation = getLocationWords(locationInput.value)
+   components.inputValues[0] = userLocation;
+   console.log(`User Location: ${userLocation}`)
     }
     clearWeatherInformation();
     console.log(`userInputs ${components.inputValues[0]}`);
     console.log(locationInput.value);
-    console.log(components.inputValues)
+    console.log(components.inputValues);
+    locationInput.value = "";
+ 
    weather();
     }
   })
@@ -52,4 +58,27 @@ const unitOptions = unitInput.querySelectorAll('option');
 export const clearWeatherInformation = () =>{
    forecastDiv.innerHTML =''
     hourlyDiv.innerHTML=''
+}
+
+
+const getLocationWords = (locationName) =>{
+  const locationWords = locationName.split(" ");
+  console.log(locationWords)
+  locationWords.forEach(word => {
+  
+  placeName.push(addCapitalLetterToString(word))
+ })
+ console.log('typeof')
+ console.log(typeof(placeName))
+ console.log(placeName)
+ return placeName.join(" ")
+}
+
+const addCapitalLetterToString = (inputString) =>{
+ const capitalisedString = inputString.split("");
+ const firstLetter = capitalisedString.slice(0,1);
+ console.log(firstLetter)
+ const capitalLetter = firstLetter[0].toUpperCase();
+ capitalisedString[0] = capitalLetter
+ return capitalisedString.join("")
 }
