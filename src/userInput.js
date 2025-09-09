@@ -32,24 +32,23 @@ export const userInputs = () =>{
   })
 
   //get unit (Metirc or Imperial)
-const unitOptions = unitInput.querySelectorAll('option');
-  unitOptions.forEach((opt) => {
-  opt.addEventListener("click", () => {
+// const unitOptions = unitInput.querySelectorAll('option');
+  unitInput.addEventListener("change", (e) => {
   clearWeatherInformation()
    let unitValue 
-   if(opt.value === "celsius"){
+   if(e.target.value === "celsius"){
     unitValue = "metric"
-   } else if (opt.value === "fahrenheit"){
+   } else if (e.target.value === "fahrenheit"){
     unitValue = "us"
    } else {
     unitValue = "metric"
    }
-   console.log(opt.value)
+   console.log(e.target.value)
     components.inputValues[3] = unitValue;
     weather();
     console.log(components.inputValues)
   });
-})
+
 };
 
 
