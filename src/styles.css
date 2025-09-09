@@ -241,8 +241,8 @@ option{
   max-width: 1280px;
   flex-wrap: wrap-reverse;
 justify-content: center;
-/* align-self: center; */
-  /* width:100%; */
+align-self: center;
+  width:100%;
   /* align-items: flex-end; */
   
 }
