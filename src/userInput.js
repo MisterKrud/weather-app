@@ -12,7 +12,7 @@ let placeName =[]
 
 //Get user inputs
 export const userInputs = () =>{
-  locationInput.addEventListener("keypress", (e)=> {
+  locationInput.addEventListener("keydown", (e)=> {
     if (e.key === "Enter") {
       if (!locationInput.value){
       components.inputValues[0]= "Melbourne"
