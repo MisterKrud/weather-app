@@ -38,7 +38,7 @@ return img
 let deg 
 let weekdays
 
-//
+//Get and display weather info on page (master function)
 export async function weather() {
    const weatherData = await getWeatherData(...components.inputValues)
     const data = weatherData.days
