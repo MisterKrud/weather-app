@@ -12,6 +12,7 @@
     "dev": "webpack serve --config webpack.dev.js",
     "dev2": "nodemon --watch src --ext js,html,css --exec \"npm run build && serve -s dist -l 3000\"",
     "deploy": "git subtree push --prefix dist origin gh-pages",
+    "deploy2": "gh-pages -d dist",
     "preview": "npm run build && serve -s dist -l 3000"
   },
   "keywords": [],

@@ -2,7 +2,6 @@ import { weather } from "./domEvents";
 import { components } from "./dataComponents";
 
 
-
 export const success = (pos) => {
     const crd = pos.coords;
     console.log(crd)
@@ -18,6 +17,5 @@ export const success = (pos) => {
     return {lat, lon}
   }
 
-
+  
 export const location = () => navigator.geolocation.getCurrentPosition(success)
-    
